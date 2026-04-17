@@ -1,0 +1,21 @@
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "sk-sp-ab9574668c4e4c60a00e9be06b2bf75a",
+    "ANTHROPIC_BASE_URL": "https://coding.dashscope.aliyuncs.com/apps/anthropic",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "qwen3.5-plus",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "qwen3.5-plus",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "qwen3.5-plus",
+    "ANTHROPIC_MODEL": "qwen3.5-plus",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
+  },
+  "model": "claude-sonnet-4-6",
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true,
+    "context7@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true
+  }
+}

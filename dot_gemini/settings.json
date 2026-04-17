@@ -1,0 +1,15 @@
+{
+  "general": {
+    "sessionRetention": {
+      "enabled": true,
+      "maxAge": "30d",
+      "warningAcknowledged": true
+    }
+  },
+  "mcpServers": {},
+  "security": {
+    "auth": {
+      "selectedType": "gemini-api-key"
+    }
+  }
+}

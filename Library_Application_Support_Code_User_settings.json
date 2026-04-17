@@ -1,0 +1,88 @@
+{
+    "files.exclude": {
+        "**/.vscode": true,
+        "**/Desktop.ini": true
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "vetur.ignoreProjectWarning": true,
+    "git.autofetch": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "Vue.volar"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "git.confirmSync": false,
+    "redhat.telemetry.enabled": false,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+
+    //maven配置
+    "maven.executable.path": "D:\\Programs\\apache-maven-3.8.5\\bin\\mvn.cmd",
+    "maven.terminal.useJavaHome": true,
+    "maven.terminal.customEnv": [
+        {
+            "environmentVariable": "JAVA_HOME",
+            "value": "D:\\Program Files\\Java\\jdk-11.0.14"
+        }
+    ],
+
+    //icon
+
+    //背景
+    "background.useDefault": false,
+    "background.customImages": [
+        "https://hanshaobo.top/xenoblade2.png",
+    ],
+    "background.style": {
+        "content": "''",
+        "pointer-events": "none",
+        "position": "absolute",
+        "z-index": "99999",
+        "width": "100%",
+        "height": "100%",
+        "background-position": "100% 100%",
+        "background-repeat": "no-repeat",
+        "opacity": 0.2
+    },
+
+    
+    "explorer.confirmDelete": false,
+    "editor.inlineSuggest.enabled": true,
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": "off"
+    },
+    "remote.SSH.defaultExtensions": [
+        "gitpod.gitpod-remote-ssh"
+    ],
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "explorer.confirmDragAndDrop": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "remote.SSH.remotePlatform": {
+        "*.gitpod.io": "linux"
+    },
+    "claudeCode.preferredLocation": "panel",
+    "claudeCode.disableLoginPrompt": true,
+    "claudeCode.environmentVariables": [],
+    "claudeCode.selectedModel": "glm-4.7",
+    "chat.mcp.gallery.enabled": true,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}

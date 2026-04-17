@@ -1,0 +1,4 @@
+{
+  "workspace:model-selection": "{\"session\":{\"ses_42bc1b49effeOLIzCOQS37UqLX\":{\"agent\":\"build\",\"variant\":null,\"model\":{\"modelID\":\"minimax-m2.5-free\",\"providerID\":\"opencode\"}}}}",
+  "workspace:project": "{\"value\":{\"icon\":{\"color\":\"cyan\"}}}"
+}

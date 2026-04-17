@@ -1,0 +1,30 @@
+[core]
+	autocrlf = input
+	excludesfile = /Users/luka/.gitignore_global
+[user]
+	name = hanshaobo
+	email = hanshaobo@gw.com.cn
+[safe]
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-core
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-cask
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-core
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-cask
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-core
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-cask
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-core
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-cask
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-core
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-cask
+	directory = *
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[http "http://gitee.gw.com.cn"]
+	proxy = 
+[http "https://gitee.gw.com.cn"]
+	proxy = 
+[http "http://gitee.gw.com.cn/mobilephone/andriod/app"]
+	proxy = 

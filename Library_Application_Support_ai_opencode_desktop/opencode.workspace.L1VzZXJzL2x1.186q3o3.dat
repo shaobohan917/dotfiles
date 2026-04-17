@@ -1,0 +1,5 @@
+{
+  "workspace:prompt": "{\"prompt\":[{\"type\":\"text\",\"content\":\"\",\"start\":0,\"end\":0}],\"cursor\":0,\"context\":{\"activeTab\":true,\"items\":[]}}",
+  "session:ses_44056b92affePkT4RXBg2Jo5AX:prompt": "{\"prompt\":[{\"type\":\"text\",\"content\":\"\",\"start\":0,\"end\":0}],\"cursor\":0,\"context\":{\"activeTab\":true,\"items\":[]}}",
+  "session:ses_44056b92affePkT4RXBg2Jo5AX:terminal": "{\"all\":[{\"id\":\"pty_bc0096d93001YQkKQ92LGOY5bQ\",\"title\":\"Terminal 1\",\"titleNumber\":1,\"buffer\":\"\\u001b[38;2;33;30;30;48;2;252;252;252mluka@lukadeiMac douyin_assistant %                                                                                                                                                                                                          \\u001b[1;36H\",\"rows\":14,\"cols\":236,\"scrollY\":0}],\"active\":\"pty_bc0096d93001YQkKQ92LGOY5bQ\"}"
+}

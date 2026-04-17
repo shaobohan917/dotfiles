@@ -1,0 +1,6 @@
+{
+  "workspace:prompt": "{\"prompt\":[{\"type\":\"text\",\"content\":\"\",\"start\":0,\"end\":0}],\"cursor\":0,\"context\":{\"activeTab\":true,\"items\":[]}}",
+  "session:ses_42bc1b49effeOLIzCOQS37UqLX:comments": "{\"comments\":{}}",
+  "session:ses_42bc1b49effeOLIzCOQS37UqLX:prompt": "{\"prompt\":[{\"type\":\"text\",\"content\":\"\",\"start\":0,\"end\":0}],\"cursor\":0,\"context\":{\"items\":[],\"activeTab\":true}}",
+  "workspace:terminal": "{\"all\":[{\"id\":\"pty_d338fe696001uiU64d4621N1zN\",\"title\":\"Terminal 1\",\"titleNumber\":1}],\"active\":\"pty_d338fe696001uiU64d4621N1zN\"}"
+}
