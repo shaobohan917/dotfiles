@@ -1,150 +1,109 @@
 # Dotfiles 配置指南
 
-这是 shaobohan917 的个人 dotfiles 配置，由 chezmoi 管理。
+这是 shaobohan917 的个人 dotfiles 配置，由 chezmoi 管理。当前同步目标是 **fish shell**；敏感信息和设备专属状态不纳入仓库。
 
 ## 快速开始（另一台电脑首次配置）
 
 ### 前置条件
 - 已安装 Homebrew
 - 已配置 GitHub SSH Key
-- 已安装 git
+- 已安装或可使用 git
 
-### 步骤 1：安装 chezmoi
+### 1. 安装 chezmoi 并应用配置
+
 ```bash
 brew install chezmoi
+git config --global url."git@github.com:".insteadOf "https://github.com/"
+chezmoi init --apply git@github.com:shaobohan917/dotfiles.git
 ```
 
-### 步骤 2：拉取并应用配置
+`chezmoi` 默认将源目录放在 `$(chezmoi source-path)`（通常是 `~/.local/share/chezmoi`），不是 `~/dotfiles`。
+
+### 2. 安装 Homebrew 包
+
 ```bash
-chezmoi init --apply shaobohan917
+brew bundle --file="$(chezmoi source-path)/Brewfile"
 ```
 
-这会自动：
-- 克隆 dotfiles 仓库到 `~/dotfiles`
-- 将所有配置文件链接到正确位置
-- 创建必要的目录结构
+Brewfile 会安装 fish、Starship、fzf、lsd、zoxide 等 fish 配置依赖，以及其他个人工具。包安装失败时可以先执行 `brew update`，再使用 `--verbose` 重试。
 
-### 步骤 3：安装 Homebrew 包
+### 3. 将 fish 设为登录 Shell
+
 ```bash
-cd ~/dotfiles && brew bundle install
+chsh -s "$(command -v fish)"
+exec fish -l
 ```
 
-这会安装 Brewfile 中列出的所有包（约 80+ 个）。
+如果 `command -v fish` 没有输出，先确认 Brewfile 已安装成功。
 
-### 步骤 4：手动配置 API Keys
+### 4. 配置本机专属内容
 
-以下文件需要手动输入敏感信息：
+敏感环境变量、SSH Key、Docker 上下文、Conda/OrbStack 等设备专属配置不要写入仓库。可在本机创建 `~/.config/fish/conf.d/local.fish` 保存个人环境变量；该文件不由本仓库管理。
 
-**~/.zshrc** - 编辑以下变量：
-```bash
-export DASHSCOPE_API_KEY="你的密钥"
-export CLAW_DEFAULT_MODEL="qwen3.5-plus"
-```
+### 5. 验证
 
-**~/.local/bin/env** - 编辑环境变量（如果文件存在）
-
-**~/.claude/settings.json** - 配置个人设置
-
-### 步骤 5：验证配置
-```bash
-# 重新加载 Shell
-source ~/.zshrc
-
-# 验证 Starship
+```fish
+fish -n ~/.config/fish/config.fish
 starship --version
-
-# 验证 chezmoi 状态
 chezmoi status
 ```
 
----
+## 日常同步
 
-## 后续同步
+### 当前电脑：修改 fish 配置并推送前检查
 
-### 本机推送更新
-```bash
-# 添加更改的文件
-chezmoi add ~/.zshrc
+本仓库目录和当前机器默认的 chezmoi 源目录可能不是同一个目录。若以本仓库作为源目录，使用显式 `--source`：
 
-# 推送到 GitHub
-cd ~/dotfiles
-git add .
-git commit -m "描述更改"
-git push
+```fish
+cd ~/Project/Github/dotfiles
+chezmoi --source $PWD diff
+fish -n dot_config/fish/config.fish
+git diff --check
 ```
 
-### 另一台电脑拉取更新
-```bash
+若要把当前生效的 fish 配置写回本仓库：
+
+```fish
+chezmoi --source $PWD add ~/.config/fish/config.fish
+```
+
+确认 `git diff` 没有敏感信息后，再由维护者自行执行 `git add`、`git commit` 和 `git push`。
+
+### 另一台电脑：拉取更新
+
+```fish
 chezmoi update
+brew bundle --file="$(chezmoi source-path)/Brewfile"
+exec fish -l
 ```
 
----
-
-## 配置文件列表
+## 配置文件
 
 ### Shell & Prompt
-- `.zshrc` - Zsh 配置
-- `.config/starship.toml` - Starship 提示符 (Tokyo Night 主题)
-
-### AI 工具
-- `.claude/CLAUDE.md` - Claude Code 全局指令
-- `.claude/settings.json` - Claude Code 设置
-- `.gemini/settings.json` - Gemini CLI 设置
-- `.claw/` - Claw 配置
-- `.config/clawhub_config.json` - ClawHub 配置
+- `dot_config/fish/config.fish` → `~/.config/fish/config.fish`
+- `dot_config/starship.toml` → `~/.config/starship.toml`
 
 ### 开发工具
-- `.gitconfig` - Git 配置
-- `.npmrc` - NPM 配置
-- `.local/bin/env` - 环境变量
+- `dot_gitconfig` → `~/.gitconfig`
+- `dot_npmrc` → `~/.npmrc`
+- `dot_local_bin_env` → `~/.local/bin/env`
+- `private_dot_claude/` → `~/.claude/`
+- `dot_gemini/` → `~/.gemini/`
 
 ### 应用配置
-- `Library_Application_Support_Claude*_claude_desktop_config.json` - Claude Desktop
-- `Library_Application_Support_Code_User_settings.json` - VSCode
-- `Library_Application_Support_Codex_Preferences` - Codex
-- `Library_Application_Support_OpenClaw/` - OpenClaw
-- `Library_Application_Support_ai_opencode_desktop/` - OpenCode
+- Claude Desktop
+- VS Code
+- Codex
+- OpenCode
 
 ### Homebrew
-- `Brewfile` - 所有 Homebrew 包列表
-
----
-
-## 故障排除
-
-### 如果 chezmoi 失败
-```bash
-# 检查状态
-chezmoi doctor
-
-# 强制重新应用
-chezmoi apply --force
-```
-
-### 如果 SSH 失败
-```bash
-# 测试 GitHub SSH
-ssh -T git@github.com
-```
-
-### 如果 Brew 安装失败
-```bash
-# 更新 Brew
-brew update
-
-# 逐个安装包
-brew bundle install --verbose
-```
-
----
+- `Brewfile`：Homebrew formula、cask 和 VS Code 扩展列表
 
 ## 注意事项
 
-1. **敏感信息**：API Keys 需要手动输入，不会同步
-2. **设备特定配置**：如 SSH Key、Docker 上下文等需要单独配置
-3. **同步前检查**：推送前确保没有敏感信息泄露
+1. 敏感信息和设备特定配置只保存在本机，不同步到 Git。
+2. 迁移到新设备时先安装 Brewfile，再检查 fish、Starship、fzf、lsd、zoxide 是否可用。
+3. 同步前运行 `git diff --check`，并人工检查 `git diff`，确认没有密钥或个人状态文件。
 
----
-
-**仓库地址**: https://github.com/shaobohan917/dotfiles  
+**仓库地址**: `git@github.com:shaobohan917/dotfiles.git`
 **维护者**: shaobohan917
